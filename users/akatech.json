@@ -1,0 +1,35 @@
+{
+  "name": "Aka",
+  "pfp": "./users/pfps/aka.png",
+  "bio": "https://whiskers.onrender.com",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Yo gng, wuts 9 + 2",
+      "ai_replies": [
+        {
+          "display": "11.",
+          "full": "9 + 2 = 11.",
+          "goto": 0,
+          "points": [10, 10]
+        },
+        {
+          "display": "12.",
+          "full": "9 + 2 = 12.",
+          "goto": 1,
+          "points": [-10, 10]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Thx gng"
+        },
+        {
+          "type": "exit",
+          "message": "Thx gng"
+        }
+      ]
+    }
+  ]
+}

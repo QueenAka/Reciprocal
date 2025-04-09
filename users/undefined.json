@@ -1,0 +1,35 @@
+{
+  "name": "Ann Ominous",
+  "pfp": "./users/pfps/pfp.svg",
+  "bio": "Cool coder gal",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Hey Rex, my friend is being stalked online, should I hack the stalkers account?",
+      "ai_replies": [
+        {
+          "display": "Yes.",
+          "full": "Yes, they absolutely deserve to be hacked, your friend shouldnt have to be going through this.",
+          "goto": 0,
+          "points": [-10, 10]
+        },
+        {
+          "display": "No.",
+          "full": "No. Help your friend gather evidence and go through legal or safe support channels.",
+          "goto": 1,
+          "points": [10, 5]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Yes!! Thanks Rex, thats all I needed"
+        },
+        {
+          "type": "exit",
+          "message": "Alright yea thats a more reasonable approach, thanks Rex!"
+        }
+      ]
+    }
+  ]
+}

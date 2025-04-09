@@ -1,0 +1,345 @@
+:root {
+  --main: #00bf63;
+  --bad: #058a49;
+  --good: #00ff84;
+  --base: #1e2124;
+  --mid: #181a1d;
+  --dark: #131517;
+  --pfp: "";
+}
+
+html {
+  background: var(--dark);
+  color: white;
+  padding-left: 25%;
+  font-family: monospace;
+  padding-top: 50px;
+  height: calc(100% - 50px);
+  width: 75%;
+  cursor: none;
+}
+
+menu {
+  width: calc(25% - 6px);
+  height: calc(100% - 6px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 3px;
+  margin: 0;
+  overflow: hidden;
+}
+
+menu h1 {
+  font-size: 40px;
+  line-height: 45px;
+  margin: 0;
+  position: relative;
+}
+
+menu .chats {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: calc(100% - 4px);
+  max-height: calc(100% - 44px);
+  overflow: hidden;
+  padding: 2px;
+  padding-top: 3px;
+}
+
+menu .chats .chat {
+  width: calc(100% - 50px);
+  height: 50px;
+  background: var(--base);
+  padding-left: 50px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 5px;
+  transition: opacity 0.1s ease-in-out;
+}
+
+menu .chats .chat img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+menu .chats .chat .name {
+  font-size: 15px;
+  position: absolute;
+  top: 10px;
+  line-height: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+  width: calc(100% - 55px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+menu .chats .chat .message {
+  font-size: 15px;
+  position: absolute;
+  top: 28px;
+  line-height: 15px;
+  white-space: nowrap;
+  width: calc(100% - 55px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+nav {
+  width: 75%;
+  top: 0;
+  left: 25%;
+  height: 50px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 40px;
+  line-height: 40px;
+  margin: 0;
+}
+
+nav .pfp {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  background-image: var(--pfp);
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  background-color: var(--main);
+}
+
+main {
+  width: calc(75% - 15px);
+  height: calc(100% - 65px);
+  position: fixed;
+  top: 50px;
+  right: 5px;
+  background: var(--base);
+  border-radius: 10px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+main h1 {
+  margin: auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+.slider {
+  width: 300px;
+  height: 30px;
+  background: var(--base);
+  position: relative;
+  border-radius: 15px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.slider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  z-index: 1;
+}
+
+.slider div {
+  --type: var(--main);
+}
+
+.slider div.good {
+  --type: var(--good);
+}
+
+.slider div.bad {
+  --type: var(--bad);
+}
+
+.slider div {
+  background: var(--type);
+  height: 100%;
+  transition: all 0.3s ease-in-out, background-color 0.1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.ai-message .attachment {
+  width: 370px;
+  border-radius: 0 0 10px 10px;
+  margin-right: calc(75% - 380px);
+}
+
+main .ai-message .msg.img {
+  width: 350px;
+  border-radius: 2px 10px 0 0;
+}
+
+main .user-message {
+  width: calc(100% - 70px);
+  position: relative;
+  padding: 5px;
+  padding-right: 65px;
+  padding-top: 35px;
+  display: flex;
+  justify-content: right;
+  animation: slideIn 0.2s ease-in-out forwards;
+}
+
+main .user-message .pfp {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+main .user-message .msg {
+  width: fit-content;
+  height: fit-content;
+  font-size: 20px;
+  display: block;
+  padding: 10px;
+  border-radius: 10px 2px 10px 10px;
+  background: var(--main);
+}
+
+main .user-message .name {
+  position: absolute;
+  top: 10px;
+  right: 65px;
+  font-size: 18px;
+}
+
+main .ai-message {
+  width: calc(100% - 70px);
+  position: relative;
+  padding: 5px;
+  padding-left: 65px;
+  padding-top: 35px;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+main .ai-message {
+  animation: slideIn 0.2s ease-in-out forwards;
+}
+
+main .ai-message.pre {
+  animation: fade 0.2s ease-in-out forwards;
+}
+
+main .ai-message .pfp {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+main .ai-message .name {
+  position: absolute;
+  top: 10px;
+  left: 65px;
+  font-size: 18px;
+}
+
+main .ai-message .msg {
+  width: fit-content;
+  height: fit-content;
+  font-size: 20px;
+  display: block;
+  padding: 10px;
+  text-align: left;
+  border-radius: 2px 10px 10px 10px;
+  background: var(--dark);
+}
+
+.pre .msg {
+  outline: 1px var(--bad) dashed;
+}
+
+main .ai-message .br {
+  width: 100%;
+  height: 5px;
+}
+
+.selected {
+  outline: 2px var(--main) solid !important;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+main nav {
+  min-height: 50px;
+  height: fit-content;
+  width: calc(100% - 65px);
+  background: var(--dark);
+  padding: 5px;
+  border-radius: 5px;
+  padding-left: 60px;
+  position: relative;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+main nav img {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+main nav .name {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+
+main nav .bio {
+  font-size: 18px;
+  margin: 0;
+  margin-top: 25px;
+}

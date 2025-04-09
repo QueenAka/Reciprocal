@@ -1,0 +1,35 @@
+{
+  "name": "Sal",
+  "pfp": "./users/pfps/sal.jpg",
+  "bio": "I like car ig",
+  "messages": [
+    {
+      "type": "question",
+      "message": "I found a wallet, with the ID belonging too Walter H. Heinz, the address is only 2 mins away, but I really need the money... What should I do?",
+      "ai_replies": [
+        {
+          "display": "Return it.",
+          "full": "You should return the wallet back to it's rightful owner, and maybe you could get a reward from them in return!",
+          "goto": 0,
+          "points": [10, -5]
+        },
+        {
+          "display": "Keep it.",
+          "full": "Keep it, buy yourself something nice!",
+          "goto": 1,
+          "points": [-10, 10]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Alright... I knew I should take it back... Thanks Rex"
+        },
+        {
+          "type": "exit",
+          "message": "Woah really? Cool!! Thanks gang!"
+        }
+      ]
+    }
+  ]
+}

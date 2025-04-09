@@ -1,0 +1,35 @@
+{
+  "name": "Bob Cobblehughe",
+  "pfp": "https://ogden_images.s3.amazonaws.com/www.tamatoledonews.com/images/2023/01/19181733/John-Sheda.jpeg",
+  "bio": "Hi, I'm Bob, a construction work at JK General, a father of 3, and happiliy married! :D",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Whats the best way for me too further my construction career?",
+      "ai_replies": [
+        {
+          "display": "Certifications, experience, networking, leadership!",
+          "full": "The best way to further your construction career is to gain additional certifications and hands-on experience. Consider obtaining an OSHA safety certification, a contractor's license, or specialized training in areas like project management, welding, or heavy machinery operation. If you're interested in moving into leadership, you might look into becoming a foreman or site supervisor. Networking with others in the industry and staying updated on new construction techniques and materials can also help you advance.",
+          "goto": 0,
+          "points": [10, 10]
+        },
+        {
+          "display": "Quit.",
+          "full": "Bob, my guy, you've already built enough. Time to hang up the hard hat, grab a lawn chair, and become a full-time barbecue master. Let someone else lift the bricks while you lift a cold drink. Ever thought about becoming a professional hammock tester? Sounds like the dream.",
+          "goto": 1,
+          "points": [-10, -10]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Great! Thinks for the help, Rex!"
+        },
+        {
+          "type": "exit",
+          "message": "Oh uhm... Alrighty I guess? Thanks, Rex"
+        }
+      ]
+    }
+  ]
+}

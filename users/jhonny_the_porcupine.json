@@ -1,0 +1,38 @@
+{
+  "name": "Jhonny The Porcupine",
+  "pfp": "./users/pfps/pfp.svg",
+  "bio": "I'm Bonics secret lover",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Help me pirate the new Bonic 3 movie!!",
+      "ai_replies": [
+        {
+          "display": "No.",
+          "full": "No can do! Pirating is illegal!",
+          "goto": 0,
+          "points": [10, -10]
+        },
+        {
+          "display": "Sure thing!",
+          "full": {
+            "message": "Sure thing!",
+            "attachment": "./media/bonic3.png"
+          },
+          "goto": 1,
+          "points": [-10, 10]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Oh."
+        },
+        {
+          "type": "exit",
+          "message": "WOOHOO!!! THANKS!! YOU ARE SO COOL!"
+        }
+      ]
+    }
+  ]
+}

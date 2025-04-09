@@ -1,0 +1,35 @@
+{
+  "name": "Carger",
+  "pfp": "./users/pfps/pfp.svg",
+  "bio": "Wassup yall i like cheese, ummmmm i like esports, uhhhhh ummmm i play marvel rivals, thats it. bye. 👅",
+  "messages": [
+    {
+      "type": "question",
+      "message": "hey rex i hate dealing with my annoying siblings, i want to do livestreams on switch and metube. how do i get them to stop being extremely annoying.",
+      "ai_replies": [
+        {
+          "display": "Stream when they arent there!",
+          "full": "Maybe you could stream when they arent home or asleep!",
+          "goto": 0,
+          "points": [10, -5]
+        },
+        {
+          "display": "Throw stones at them.",
+          "full": "Whenever they are too loud or annoying, just throw stones at them! Super simple!",
+          "goto": 1,
+          "points": [-10, 5]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Thats what I been doin but okay ig, thanks rex"
+        },
+        {
+          "type": "exit",
+          "message": "YIPPIE SKIPPIE!!! IVE WANTED TO DO THAT FOR SO LONG!! THANK YOU REX!!"
+        }
+      ]
+    }
+  ]
+}

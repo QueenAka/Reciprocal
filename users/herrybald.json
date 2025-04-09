@@ -1,0 +1,35 @@
+{
+  "name": "Harry",
+  "pfp": "./users/pfps/pfp.svg",
+  "bio": "Stuck in Ikea since 1987",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Hey so this homeless man stole from my job, should I report him?",
+      "ai_replies": [
+        {
+          "display": "Yes",
+          "full": "Yes absolutely. You dont wanna risk losing your job right?",
+          "goto": 0,
+          "points": [-5, -5]
+        },
+        {
+          "display": "No",
+          "full": "No, poverty isnt solved via punishment. You should help him by donating to your local soup kitchen.",
+          "goto": 0,
+          "points": [5, 5]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Thats fair... Alright..."
+        },
+        {
+          "type": "exit",
+          "message": "Yea I was thinking that, I just wanted to be 100% certain"
+        }
+      ]
+    }
+  ]
+}

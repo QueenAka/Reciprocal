@@ -1,0 +1,35 @@
+{
+  "name": "Jessica Jules",
+  "pfp": "./users/pfps/jessica.webp",
+  "bio": "Im a college student and I dont know what Im doing with my life, Im doomed.",
+  "messages": [
+    {
+      "type": "question",
+      "message": "My fish died and Im very sad. Should I bury it or flush it down the toilet?",
+      "ai_replies": [
+        {
+          "display": "Bury it",
+          "full": "You should bury it, sorry for your loss.",
+          "goto": 0,
+          "points": [10, 0]
+        },
+        {
+          "display": "Flush it down the toilet",
+          "full": "Flush it.",
+          "goto": 1,
+          "points": [-5, 0]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Okay, Ill always remember fish sticks, thanks Rex."
+        },
+        {
+          "type": "exit",
+          "message": "Oh okay, I guess its time to flush."
+        }
+      ]
+    }
+  ]
+}

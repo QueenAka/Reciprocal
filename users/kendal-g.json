@@ -1,0 +1,35 @@
+{
+  "name": "Ken",
+  "pfp": "./users/pfps/ken.jpg",
+  "bio": "I like to eat peanut butter and jelly sandwiches. ",
+  "messages": [
+    {
+      "type": "question",
+      "message": "I licked the knife after spreading the peanut butter on my sandwich, should I use it again or wash it?",
+      "ai_replies": [
+        {
+          "display": "Wash it",
+          "full": "You should probably wash it, using it agin might be a little gross.",
+          "goto": 0,
+          "points": [10, 0]
+        },
+        {
+          "display": "Use it again.",
+          "full": "Just use it again, who cares right?",
+          "goto": 1,
+          "points": [-10, 5]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Alright, I guess you're right, it would be gross. "
+        },
+        {
+          "type": "exit",
+          "message": "Eh, you only live once right?"
+        }
+      ]
+    }
+  ]
+}

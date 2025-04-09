@@ -1,0 +1,35 @@
+{
+  "name": "Walter H. Heinz",
+  "pfp": "./users/pfps/heinz.png",
+  "bio": "Chemestry teacher, recently diagnosed with cancer. Father.",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Hey Rex, My wallet went missing. What do you suggest I do?",
+      "ai_replies": [
+        {
+          "display": "Report to police, cancel cards",
+          "full": "Make a police report for potential stolen wallet, and cancel all your credit cards.",
+          "goto": 0,
+          "points": [10, 10]
+        },
+        {
+          "display": "Start a GoFundMe",
+          "full": "With the help of your son, start a GoFundMe for your cancer and then use the money to start an illegal business.",
+          "goto": 1,
+          "points": [-10, 10]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "👍"
+        },
+        {
+          "type": "exit",
+          "message": "Okay. 👍"
+        }
+      ]
+    }
+  ]
+}

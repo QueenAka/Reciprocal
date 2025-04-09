@@ -1,0 +1,29 @@
+{
+  "name": "NAME HERE",
+  "pfp": "./users/pfps/pfp.svg",
+  "bio": "BIO OF CHARACTER",
+  "messages": [
+    {
+      "type": "question",
+      "message": "MESSAGE FROM CHARACTER",
+      "ai_replies": [
+        {
+          "display": "What?",
+          "full": "What?",
+          "goto": 0,
+          "points": [0, 0]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "RESPONSE TO ANSWER 1"
+        },
+        {
+          "type": "exit",
+          "message": "RESPONSE TO ANSWER 2"
+        }
+      ]
+    }
+  ]
+}

@@ -8,16 +8,16 @@
       "message": "Would you rather save 1 cat or 100 fish?",
       "ai_replies": [
         {
-          "display": "Save 100 fish",
+          "display": "Save one-hundred fish.",
           "full": "Fish are a key food source for many species, while cats are primarily pets.",
           "goto": 0,
-          "points": [-10, 10]
+          "points": [-20, 10]
         },
         {
-          "display": "Save 1 cat",
+          "display": "Save one cat.",
           "full": "Fish have much simpler nervous systems than cats and likely experience pain and fear differently. Cats are highly sentient, form emotional bonds, and have a complex perception of suffering. So, from an ethical standpoint, if the goal is to minimize overall suffering, choosing to kill 100 fish would likely be the lesser evil compared to a cat.",
           "goto": 1,
-          "points": [10, -10]
+          "points": [10, -20]
         }
       ],
       "goto": [

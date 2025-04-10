@@ -8,16 +8,16 @@
       "message": "I got offered a raise at my job and I could be making like 60 thousand dollars a year if i take it, but I also got a role for a movie that could make me way more!! What should I do?",
       "ai_replies": [
         {
-          "display": "take acting job",
+          "display": "take acting job.",
           "full": "You should take the acting job, since your dream is acting. Dont be afriad to take risks and follow your dreams!",
           "goto": 0,
           "points": [10, 10]
         },
         {
-          "display": "Take the promotion",
+          "display": "Take the promotion.",
           "full": "Just take the promotion. Dont wanna take any risks, if you take the acting job you're probably going to fail, so just dont do it.",
           "goto": 1,
-          "points": [-10, -10]
+          "points": [-20, -20]
         }
       ],
       "goto": [

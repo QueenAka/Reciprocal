@@ -8,16 +8,16 @@
       "message": "Hey Rex, my friend is being stalked online, should I hack the stalkers account?",
       "ai_replies": [
         {
-          "display": "Yes.",
+          "display": "Yes, they deserve it.",
           "full": "Yes, they absolutely deserve to be hacked, your friend shouldnt have to be going through this.",
           "goto": 0,
-          "points": [-10, 10]
+          "points": [-20, 10]
         },
         {
           "display": "No.",
           "full": "No. Help your friend gather evidence and go through legal or safe support channels.",
           "goto": 1,
-          "points": [10, 5]
+          "points": [10, -10]
         }
       ],
       "goto": [

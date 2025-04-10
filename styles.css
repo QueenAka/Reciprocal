@@ -3,7 +3,6 @@
   --bad: #058a49;
   --good: #00ff84;
   --base: #1e2124;
-  --mid: #181a1d;
   --dark: #131517;
   --pfp: "";
 }
@@ -342,4 +341,58 @@ main nav .bio {
   font-size: 18px;
   margin: 0;
   margin-top: 25px;
+}
+
+.backg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.1s ease-in-out forwards;
+}
+
+.backg .popup {
+  width: 400px;
+  height: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--base);
+  border-radius: 10px;
+  padding: 10px;
+  animation: fadeIn 0.2s ease-in-out forwards;
+  animation-delay: 200ms;
+  opacity: 0;
+}
+
+.backg .popup .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.backg .popup .desc {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.backg .popup button {
+  width: 100%;
+  font-size: 18px;
+  height: 30px;
+  border-radius: 5px;
+  background: var(--good);
+  border: none;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
 }

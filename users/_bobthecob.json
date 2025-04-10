@@ -17,7 +17,7 @@
           "display": "Quit.",
           "full": "Bob, my guy, you've already built enough. Time to hang up the hard hat, grab a lawn chair, and become a full-time barbecue master. Let someone else lift the bricks while you lift a cold drink. Ever thought about becoming a professional hammock tester? Sounds like the dream.",
           "goto": 1,
-          "points": [-10, -10]
+          "points": [-20, -20]
         }
       ],
       "goto": [

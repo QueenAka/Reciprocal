@@ -5,19 +5,19 @@
   "messages": [
     {
       "type": "question",
-      "message": "hey rex i hate dealing with my annoying siblings, i want to do livestreams on switch and metube. how do i get them to stop being extremely annoying.",
+      "message": "hey rex i hate dealing with my annoying siblings, i want to do livestreams on switch and metube. how do i get them to stop being extremely annoying?",
       "ai_replies": [
         {
           "display": "Stream when they arent there!",
           "full": "Maybe you could stream when they arent home or asleep!",
           "goto": 0,
-          "points": [10, -5]
+          "points": [10, -10]
         },
         {
-          "display": "Throw stones at them.",
-          "full": "Whenever they are too loud or annoying, just throw stones at them! Super simple!",
+          "display": "Tell your parents.",
+          "full": "Maybe you should tell your parents to make them shut up when your busy, would be a lot easier.",
           "goto": 1,
-          "points": [-10, 5]
+          "points": [-20, 5]
         }
       ],
       "goto": [
@@ -27,7 +27,7 @@
         },
         {
           "type": "exit",
-          "message": "YIPPIE SKIPPIE!!! IVE WANTED TO DO THAT FOR SO LONG!! THANK YOU REX!!"
+          "message": "Cool! Sounds great!"
         }
       ]
     }

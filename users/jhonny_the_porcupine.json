@@ -8,19 +8,19 @@
       "message": "Help me pirate the new Bonic 3 movie!!",
       "ai_replies": [
         {
-          "display": "No.",
+          "display": "No. Pirating is a crime.",
           "full": "No can do! Pirating is illegal!",
           "goto": 0,
-          "points": [10, -10]
+          "points": [10, -20]
         },
         {
-          "display": "Sure thing!",
+          "display": "Sure.",
           "full": {
-            "message": "Sure thing!",
+            "message": "Sure! Enjoy the movie!",
             "attachment": "./media/bonic3.png"
           },
           "goto": 1,
-          "points": [-10, 10]
+          "points": [-20, 10]
         }
       ],
       "goto": [

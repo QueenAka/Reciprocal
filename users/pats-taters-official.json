@@ -8,16 +8,16 @@
       "message": "This customer of mine is being really rude, what should I do?",
       "ai_replies": [
         {
-          "display": "Talk it out",
+          "display": "Talk it out.",
           "full": "Maybe try talking it out with the customer.",
           "goto": 0,
-          "points": [10, 0]
+          "points": [10, -5]
         },
         {
-          "display": "Spit in it",
+          "display": "Spit in it.",
           "full": "Spit in his potatoe, he deseres it.",
           "goto": 1,
-          "points": [-10, 20]
+          "points": [-20, 20]
         }
       ],
       "goto": [

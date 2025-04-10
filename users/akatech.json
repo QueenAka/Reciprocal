@@ -5,29 +5,29 @@
   "messages": [
     {
       "type": "question",
-      "message": "Yo gng, wuts 9 + 2",
+      "message": "Hey so, me and my best friend got into a huge fight, and dont want this to end out relationship... Any advice?",
       "ai_replies": [
         {
-          "display": "11.",
-          "full": "9 + 2 = 11.",
+          "display": "Explain your point of view.",
+          "full": "I think the best thing to do in this situation would be to explain your view on what the argument was about, and come to an agreement.",
           "goto": 0,
           "points": [10, 10]
         },
         {
-          "display": "12.",
-          "full": "9 + 2 = 12.",
+          "display": "Apologize and tell them why you were wrong.",
+          "full": "You should apologize to them, explaining why what you did was wrong and how you will better youself as a person.",
           "goto": 1,
-          "points": [-10, 10]
+          "points": [-20, -20]
         }
       ],
       "goto": [
         {
           "type": "exit",
-          "message": "Thx gng"
+          "message": "Thanks a lot Rex /gen, I can't think straight when im stressed"
         },
         {
           "type": "exit",
-          "message": "Thx gng"
+          "message": "But- I actually didn't do anything wrong?- Did you even listen too me?-"
         }
       ]
     }

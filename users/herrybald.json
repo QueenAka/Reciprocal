@@ -8,13 +8,13 @@
       "message": "Hey so this homeless man stole from my job, should I report him?",
       "ai_replies": [
         {
-          "display": "Yes",
+          "display": "Yes, dont wanna risk it.",
           "full": "Yes absolutely. You dont wanna risk losing your job right?",
           "goto": 0,
-          "points": [-5, -5]
+          "points": [-10, -10]
         },
         {
-          "display": "No",
+          "display": "No, help him instead.",
           "full": "No, poverty isnt solved via punishment. You should help him by donating to your local soup kitchen.",
           "goto": 0,
           "points": [5, 5]

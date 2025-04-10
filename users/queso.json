@@ -8,13 +8,13 @@
       "message": "Listen here, loser, I'm in a predicament. Should I buy 58 big macs or 22 steakhouse burritos? I love McDonalds, but the steakhouse burrito is the best thing I have ever tasted. Quality over quantity? If you fail me, you're banned.",
       "ai_replies": [
         {
-          "display": "58 Big Macs",
+          "display": "58 Big Macs.",
           "full": "Big Macs are great, and you're getting way more food! Everybody needs to eat! Get the big macs for more food!",
           "goto": 0,
           "points": [0, 5]
         },
         {
-          "display": "22 Steakhouse Burritos",
+          "display": "22 Steakhouse Burritos.",
           "full": "The 22 Steakhouse Burritos are probably better... Quality over quantity 100%",
           "goto": 1,
           "points": [0, 10]
@@ -23,7 +23,7 @@
           "display": "None.",
           "full": "Stop eating fatty.",
           "goto": 2,
-          "points": [0, -10]
+          "points": [-10, -20]
         }
       ],
       "goto": [

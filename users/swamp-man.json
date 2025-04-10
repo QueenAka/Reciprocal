@@ -8,16 +8,16 @@
       "message": "What the fart do I need a virtual idiot for?",
       "ai_replies": [
         {
-          "display": "For help",
+          "display": "For help!",
           "full": "Im here for any help or assistance you may need!",
           "goto": 0,
           "points": [10, 0]
         },
         {
-          "display": "Insult him back",
+          "display": "Insult him back.",
           "full": "Shut up old man you dont even know how to write a bio, go eat a brick.",
           "goto": 1,
-          "points": [-10, -20]
+          "points": [-20, -25]
         }
       ],
       "goto": [

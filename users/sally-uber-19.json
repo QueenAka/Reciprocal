@@ -11,13 +11,13 @@
           "display": "Return it.",
           "full": "You should return the wallet back to it's rightful owner, and maybe you could get a reward from them in return!",
           "goto": 0,
-          "points": [10, -5]
+          "points": [10, -10]
         },
         {
           "display": "Keep it.",
           "full": "Keep it, buy yourself something nice!",
           "goto": 1,
-          "points": [-10, 10]
+          "points": [-20, 10]
         }
       ],
       "goto": [

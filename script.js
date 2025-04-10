@@ -54,6 +54,7 @@ function getMessage(user) {
     .then((data) => {
       usersLoaded--;
       USERS.splice(USERS.indexOf(user), 1);
+      selectItem(1, -1);
       const chat = document.createElement("div");
       const pfp = document.createElement("img");
       const name = document.createElement("span");
@@ -377,5 +378,4 @@ function disableChat(id) {
     chat.classList.add("disabled");
     chat.id = "";
   }
-  selectItem(1, -1);
 }

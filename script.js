@@ -34,7 +34,6 @@ function changeValue(type = 0, by = 0) {
 changeValue(0);
 changeValue(1);
 let USERS = null;
-console.log(USERS);
 fetch("./users/_.json")
   .then((res) => res.json())
   .then((data) => {
@@ -48,6 +47,7 @@ fetch("./users/_.json")
   });
 
 let usersLoaded = 1;
+let currChatID = null;
 function getMessage(user) {
   fetch(`./users/${user}.json`)
     .then((res) => res.json())
@@ -61,16 +61,14 @@ function getMessage(user) {
       const holder = document.querySelector("menu .chats");
       chat.classList.add("chat");
       chat.id = `s:0:${usersLoaded}`;
+      currChatID = chat.id;
       chat.onclick = () => {
         loadUser(data.name);
         setTimeout(() => {
-          displayMessage(
-            {
-              type: "ai",
-              message: data.messages[0].ai_replies,
-            },
-            false
-          );
+          displayMessage({
+            type: "ai",
+            message: data.messages[0].ai_replies,
+          });
         }, 200);
       };
       name.classList.add("name");
@@ -88,8 +86,8 @@ function getMessage(user) {
       holder.appendChild(chat);
       setTimeout(() => {
         chat.style.opacity = 1;
-        holder.scrollTo({ top: 0, behavior: "smooth" });
-      });
+        holder.scrollTo({ top: holder.scrollHeight, behavior: "smooth" });
+      }, 100);
     });
 }
 
@@ -155,40 +153,22 @@ function selectItem(type, change) {
   if (document.getElementById(`s:${selectedArea}:${selectedY}`)) {
     if (selectedArea == 0) {
       document.getElementById(`s:0:${menuY}`).classList.add("selected");
-      document
-        .getElementById(`s:0:${menuY}`)
-        .scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
       document.getElementById(`s:1:${selectedY}`).classList.add("selected");
-      document
-        .getElementById(`s:1:${selectedY}`)
-        .scrollIntoView({ behavior: "smooth", block: "start" });
     }
   } else {
     if (type == 0) {
       selectedArea = oldX;
       if (selectedArea == 0) {
         document.getElementById(`s:0:${menuY}`).classList.add("selected");
-        document
-          .getElementById(`s:0:${menuY}`)
-          .scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
         document.getElementById(`s:1:${selectedY}`).classList.add("selected");
-        document
-          .getElementById(`s:1:${selectedY}`)
-          .scrollIntoView({ behavior: "smooth", block: "start" });
       }
     } else {
       if (selectedArea == 0) {
         document.getElementById(`s:0:${oldY}`).classList.add("selected");
-        document
-          .getElementById(`s:0:${oldY}`)
-          .scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
         document.getElementById(`s:1:${oldY}`).classList.add("selected");
-        document
-          .getElementById(`s:1:${oldY}`)
-          .scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }
@@ -226,7 +206,6 @@ function displayMessage(json) {
     json.message.forEach((msg) => {
       const msgHold = document.createElement("span");
       msgHold.classList.add("msg");
-      console.log(msg);
       msgHold.innerText = msg.display;
       msgs.push(msgHold);
       msgHold.onclick = () => {
@@ -311,6 +290,7 @@ function selectPre(full, goto, points) {
         });
         changeValue(0, points[0]);
         changeValue(1, points[1]);
+        disableChat(currChatID);
         setTimeout(() => {
           if (USERS.length !== 0) {
             getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
@@ -336,6 +316,7 @@ document.addEventListener("keydown", (event) => {
 
 if (USERS.length !== 0) {
   getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
+  document.getElementById("s:0:0").click();
 }
 
 function endGame(type) {
@@ -388,4 +369,13 @@ function endGame(type) {
   popup.appendChild(description);
   popup.appendChild(button);
   document.body.appendChild(background);
+}
+
+function disableChat(id) {
+  const chat = document.getElementById(id);
+  if (chat) {
+    chat.classList.add("disabled");
+    chat.id = "";
+  }
+  selectItem(1, -1);
 }

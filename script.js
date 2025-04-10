@@ -54,7 +54,6 @@ function getMessage(user) {
     .then((data) => {
       usersLoaded--;
       USERS.splice(USERS.indexOf(user), 1);
-      selectItem(1, -1);
       const chat = document.createElement("div");
       const pfp = document.createElement("img");
       const name = document.createElement("span");
@@ -87,7 +86,6 @@ function getMessage(user) {
       holder.appendChild(chat);
       setTimeout(() => {
         chat.style.opacity = 1;
-        holder.scrollTo({ top: holder.scrollHeight, behavior: "smooth" });
       }, 100);
     });
 }
@@ -373,9 +371,13 @@ function endGame(type) {
 }
 
 function disableChat(id) {
-  const chat = document.getElementById(id);
-  if (chat) {
-    chat.classList.add("disabled");
-    chat.id = "";
-  }
+  // const chat = document.getElementById(id);
+  // if (chat) {
+  //   chat.classList.add("disabled");
+  //   chat.id = "";
+  // }
 }
+
+setInterval(() => {
+  document.querySelector("menu .chats").scrollTop = 0;
+});

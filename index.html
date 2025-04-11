@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hyperspace Star Zoom</title>
     <style>
       :root {
         --main: #00bf63;
@@ -194,7 +191,8 @@
           event.key.toLowerCase() == "z" ||
           event.key.toLowerCase() == "x" ||
           event.key.toLowerCase() == "i" ||
-          event.key.toLowerCase() == "o"
+          event.key.toLowerCase() == "o" ||
+          event.key.toLowerCase() == "enter"
         )
           document.querySelector(`.selectable_${hoveringOver}`).click();
       });

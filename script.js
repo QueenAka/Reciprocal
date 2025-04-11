@@ -85,7 +85,7 @@ function getMessage(user) {
       chat.style.opacity = 0;
       holder.appendChild(chat);
       setTimeout(() => {
-        chat.style.opacity = 1;
+        chat.style = "";
       }, 100);
     });
 }
@@ -133,42 +133,32 @@ function loadUser(id) {
 let selectedArea = 0;
 let selectedY = 0;
 function selectItem(type, change) {
-  let oldY;
-  let oldX = selectedArea;
-  document.querySelector(".selected")?.classList.remove("selected");
+  let oldSel = document.querySelector(".selected");
+  oldSel?.classList.remove("selected");
   if (type == 0) {
     selectedArea = change;
     if (change == 0) selectedY = 0;
   } else if (type == 1) {
-    if (selectedArea == 0) {
-      oldY = menuY;
-      menuY += change;
-    } else {
-      oldY = selectedY;
-      selectedY += change;
-    }
+    if (selectedArea == 0) menuY += change;
+    else selectedY += change;
   }
+  console.log(oldSel?.id, selectedArea, selectedY);
 
-  if (document.getElementById(`s:${selectedArea}:${selectedY}`)) {
-    if (selectedArea == 0) {
+  if (selectedArea == 0) {
+    if (document.getElementById(`s:0:${menuY}`))
       document.getElementById(`s:0:${menuY}`).classList.add("selected");
-    } else {
-      document.getElementById(`s:1:${selectedY}`).classList.add("selected");
+    else {
+      oldSel?.classList.add("selected");
+      menuY = oldSel?.id.split(":")[2] * 1;
+      selectedArea = oldSel?.id.split(":")[1] * 1;
     }
-  } else {
-    if (type == 0) {
-      selectedArea = oldX;
-      if (selectedArea == 0) {
-        document.getElementById(`s:0:${menuY}`).classList.add("selected");
-      } else {
-        document.getElementById(`s:1:${selectedY}`).classList.add("selected");
-      }
-    } else {
-      if (selectedArea == 0) {
-        document.getElementById(`s:0:${oldY}`).classList.add("selected");
-      } else {
-        document.getElementById(`s:1:${oldY}`).classList.add("selected");
-      }
+  } else if (selectedArea == 1) {
+    if (document.getElementById(`s:1:${selectedY}`))
+      document.getElementById(`s:1:${selectedY}`).classList.add("selected");
+    else {
+      oldSel?.classList.add("selected");
+      selectedY = oldSel?.id.split(":")[2] * 1;
+      selectedArea = oldSel?.id.split(":")[1] * 1;
     }
   }
 }
@@ -305,18 +295,11 @@ function selectPre(full, goto, points) {
 document.addEventListener("keydown", (event) => {
   if (
     event.key.toLowerCase() == "z" ||
-    event.key.toLowerCase() == "x" ||
     event.key.toLowerCase() == "i" ||
-    event.key.toLowerCase() == "o" ||
     event.key.toLowerCase() == "enter"
   )
     document.querySelector(".selected")?.click();
 });
-
-if (USERS.length !== 0) {
-  getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
-  document.getElementById("s:0:0").click();
-}
 
 function endGame(type) {
   const types = [
@@ -355,9 +338,7 @@ function endGame(type) {
   document.addEventListener("keydown", (event) => {
     if (
       event.key.toLowerCase() == "z" ||
-      event.key.toLowerCase() == "x" ||
       event.key.toLowerCase() == "i" ||
-      event.key.toLowerCase() == "o" ||
       event.key.toLowerCase() == "enter"
     )
       window.location.href = "./index.html";
@@ -371,13 +352,48 @@ function endGame(type) {
 }
 
 function disableChat(id) {
-  // const chat = document.getElementById(id);
-  // if (chat) {
-  //   chat.classList.add("disabled");
-  //   chat.id = "";
-  // }
+  const chat = document.getElementById(id);
+  if (chat) {
+    chat.classList.add("disabled");
+    chat.onclick = "";
+  }
 }
 
 setInterval(() => {
   document.querySelector("menu .chats").scrollTop = 0;
+});
+
+let patterns = {
+  oooo: () => alert("xoxxox, oxoxo, xxxooxxx"),
+  xoxxox: () => (window.location.href = "./index.html"),
+  oxoxo: () => document.documentElement.classList.add("evil"),
+  xxxooxxx: () =>
+    setInterval(() => {
+      document.querySelectorAll("img").forEach((img) => {
+        img.src = "./users/pfps/ken.jpg";
+      });
+    }),
+};
+
+let currentInput = [];
+let lastKeyTime = Date.now();
+const maxDelay = 500;
+
+document.addEventListener("keydown", (e) => {
+  const now = Date.now();
+  if (now - lastKeyTime > maxDelay) currentInput = [];
+  lastKeyTime = now;
+  currentInput.push(e.key.toLowerCase());
+  const maxLength = Math.max(...Object.keys(patterns).map((p) => p.length));
+  if (currentInput.length > maxLength) currentInput.shift();
+
+  const inputStr = currentInput.join("");
+
+  for (const pattern in patterns) {
+    if (inputStr.endsWith(pattern)) {
+      patterns[pattern]();
+      currentInput = [];
+      break;
+    }
+  }
 });

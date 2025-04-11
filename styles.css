@@ -7,6 +7,10 @@
   --pfp: "";
 }
 
+* {
+  user-select: none;
+}
+
 html {
   background: var(--dark);
   color: white;
@@ -179,13 +183,13 @@ main h1 {
 }
 
 .ai-message .attachment {
-  width: 370px;
+  width: 320px;
   border-radius: 0 0 10px 10px;
-  margin-right: calc(75% - 380px);
+  margin-right: calc(75% - 330px);
 }
 
 main .ai-message .msg.img {
-  width: 350px;
+  width: 300px;
   border-radius: 2px 10px 0 0;
 }
 
@@ -390,5 +394,9 @@ main nav .bio {
 }
 
 .disabled {
-  opacity: 0.9 !important;
+  opacity: 0.5 !important;
+}
+
+.evil {
+  filter: invert(1);
 }

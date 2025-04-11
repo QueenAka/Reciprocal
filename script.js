@@ -133,7 +133,8 @@ function loadUser(id) {
 let selectedArea = 0;
 let selectedY = 0;
 function selectItem(type, change = 0) {
-  if (!type) document.getElementById("s:0:0").classList.add("selected");
+  if (type === undefined)
+    document.getElementById("s:0:0").classList.add("selected");
   let oldSel = document.querySelector(".selected");
   oldSel?.classList.remove("selected");
   if (type == 0) {

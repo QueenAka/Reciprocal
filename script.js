@@ -41,7 +41,7 @@ fetch("./users/_.json")
     setTimeout(() => {
       getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
       setTimeout(() => {
-        selectItem(-1);
+        selectItem();
       }, 150);
     }, Math.floor(Math.random() * 1800) + 200);
   });
@@ -132,7 +132,8 @@ function loadUser(id) {
 
 let selectedArea = 0;
 let selectedY = 0;
-function selectItem(type, change) {
+function selectItem(type, change = 0) {
+  if (!type) document.getElementById("s:0:0").classList.add("selected");
   let oldSel = document.querySelector(".selected");
   oldSel?.classList.remove("selected");
   if (type == 0) {
@@ -142,7 +143,6 @@ function selectItem(type, change) {
     if (selectedArea == 0) menuY += change;
     else selectedY += change;
   }
-  console.log(oldSel?.id, selectedArea, selectedY);
 
   if (selectedArea == 0) {
     if (document.getElementById(`s:0:${menuY}`))

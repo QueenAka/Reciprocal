@@ -255,6 +255,7 @@ main .ai-message .pfp {
   top: 5px;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 }
 
 main .ai-message .name {

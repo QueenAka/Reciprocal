@@ -339,7 +339,7 @@ function endGame(type) {
 
   title.innerText = types[type].title;
   description.innerText = types[type].description;
-  button.innerText = "Return Home";
+  button.innerText = "Play Again";
   document.addEventListener("keydown", (event) => {
     if (
       event.key.toLowerCase() == "z" ||

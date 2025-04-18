@@ -4,6 +4,10 @@ let values = [100, 100];
 let currPre;
 let loadedUser;
 let loadedUsers = {};
+const aiPfp = `https://picsum.photos/seed/${
+  Math.floor(Math.random() * 999999) + 1
+}`;
+document.documentElement.style = `--pfp: url(${aiPfp})`;
 function changeValue(type = 0, by = 0) {
   function getPercentage(min, max, current) {
     if (current < min) current = min;
@@ -204,7 +208,7 @@ function displayMessage(json) {
     });
 
     name.innerText = "RexAI";
-    pfp.src = "./users/pfps/pfp.svg";
+    pfp.src = aiPfp;
     pfp.classList.add("pfp");
 
     holder.appendChild(pfp);
@@ -256,7 +260,7 @@ function displayMessage(json) {
     if (json.type == "ai") {
       const aud = new Audio("./media/send.wav");
       aud.play();
-      pfp.src = "./users/pfps/pfp.svg";
+      pfp.src = aiPfp;
       name.innerText = "RexAI";
     } else {
       const aud = new Audio("./media/recieve.wav");

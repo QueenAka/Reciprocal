@@ -6,7 +6,7 @@ let loadedUser;
 let loadedUsers = {};
 const aiPfp = `https://picsum.photos/seed/${
   Math.floor(Math.random() * 999999) + 1
-}`;
+}/100`;
 document.documentElement.style = `--pfp: url(${aiPfp})`;
 function changeValue(type = 0, by = 0) {
   function getPercentage(min, max, current) {

@@ -204,6 +204,7 @@ function displayMessage(json) {
       msgs.push(msgHold);
       msgHold.onclick = () => {
         selectPre(msg.full, msg.goto, msg.points);
+        disableChat(currChatID);
       };
     });
 
@@ -287,7 +288,6 @@ function selectPre(full, goto, points) {
         });
         changeValue(0, points[0]);
         changeValue(1, points[1]);
-        disableChat(currChatID);
         setTimeout(() => {
           if (USERS.length !== 0) {
             getMessage(USERS[Math.floor(Math.random() * USERS.length)]);

@@ -224,7 +224,7 @@ function displayMessage(json) {
       holder.appendChild(div);
     });
     document.querySelector("main").appendChild(holder);
-    selectItem(1, 0);
+    selectItem(0, 1);
     if (json.type == "ai") {
       const aud = new Audio("./media/send.wav");
       aud.play();

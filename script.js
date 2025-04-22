@@ -364,20 +364,24 @@ function disableChat(id) {
   }
 }
 
+const menuDotChats = document.querySelector("menu .chats");
+const textThing = document.querySelector("main");
 setInterval(() => {
-  document.querySelector("menu .chats").scrollTop = 0;
-});
+  menuDotChats.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+  textThing.scrollTo({
+    top: textThing.scrollHeight,
+    behavior: "smooth",
+  });
+}, 100);
 
 let patterns = {
   oooo: () => alert("xoxxox, oxoxo, xxxooxxx"),
   xoxxox: () => (window.location.href = "./index.html"),
   oxoxo: () => document.documentElement.classList.add("evil"),
-  xxxooxxx: () =>
-    setInterval(() => {
-      document.querySelectorAll("img").forEach((img) => {
-        img.src = "./users/pfps/ken.jpg";
-      });
-    }),
+  xxxooxxx: () => document.documentElement.classList.add("neutral"),
 };
 
 let currentInput = [];

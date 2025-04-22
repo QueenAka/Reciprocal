@@ -1,0 +1,51 @@
+{
+  "name": "Markle",
+  "pfp": "./users/pfps/merkle.jpg",
+  "bio": "Official memer",
+  "messages": [
+    {
+      "type": "question",
+      "message": "Send me something funny please",
+      "ai_replies": [
+        {
+          "display": "No",
+          "full": "What if I dont?",
+          "goto": 0,
+          "points": [0, -20]
+        },
+        {
+          "display": "Send Markle a selfie of himself",
+          "full": {
+            "message": "Here, the funniest thing I have ever seen",
+            "attachment": "./media/merkle.webp"
+          },
+          "goto": 1,
+          "points": [-20, 20]
+        },
+        {
+          "display": "ROAR!",
+          "full": {
+            "message": "ROAARRRRR!!!",
+            "attachment": "./media/ROAR.jpg"
+          },
+          "goto": 1,
+          "points": [10, 10]
+        }
+      ],
+      "goto": [
+        {
+          "type": "exit",
+          "message": "Uhm... I... Don't know..."
+        },
+        {
+          "type": "exit",
+          "message": "WHAT WHERE DID YOU GET THIS PICTURE OF ME?? HUH?? THATS ACTUALLY PRETTY FUNNY.."
+        },
+        {
+          "type": "exit",
+          "message": "What?-"
+        }
+      ]
+    }
+  ]
+}

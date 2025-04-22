@@ -28,7 +28,7 @@
             "message": "ROAARRRRR!!!",
             "attachment": "./media/ROAR.jpg"
           },
-          "goto": 1,
+          "goto": 2,
           "points": [10, 10]
         }
       ],

@@ -11,7 +11,7 @@
           "display": "Stream when they arent there!",
           "full": "Maybe you could stream when they arent home or asleep!",
           "goto": 0,
-          "points": [10, -10]
+          "points": [10, -20]
         },
         {
           "display": "Tell your parents.",

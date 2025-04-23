@@ -10,8 +10,6 @@ const aiPfp = `https://picsum.photos/seed/${
 document.documentElement.style = `--pfp: url(${aiPfp})`;
 function changeValue(type = 0, by = 0) {
   function getPercentage(min, max, current) {
-    if (current < min) current = min;
-    if (current > max) current = max;
     return ((current - min) / (max - min)) * 100;
   }
 
@@ -20,17 +18,27 @@ function changeValue(type = 0, by = 0) {
     [-50, 150],
   ];
   const types = ["morality", "reputation"];
+  const [min, max] = minMaxVals[type];
+  const currentVal = values[type];
+  let newVal = currentVal + by;
+  if (newVal < min) newVal = min;
+  if (newVal > max) newVal = max;
+
+  values[type] = newVal;
+
   const bar = document.getElementById(types[type]);
   if (by < 0) bar.classList.add("bad");
   if (by > 0) bar.classList.add("good");
-  const val = (values[type] += by);
-  const percent = getPercentage(minMaxVals[type][0], minMaxVals[type][1], val);
+
+  const percent = getPercentage(min, max, newVal);
   bar.style.width = `${percent}%`;
+
   setTimeout(() => {
     if (by < 0) bar.classList.remove("bad");
     if (by > 0) bar.classList.remove("good");
   }, 300);
-  if (val <= 0) {
+
+  if (newVal <= 0) {
     endGame(type);
   }
 }

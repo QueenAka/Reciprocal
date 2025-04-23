@@ -17,7 +17,7 @@
           "display": "Flush it.",
           "full": "Flush it down the toilet.",
           "goto": 1,
-          "points": [-10, 0]
+          "points": [-20, 0]
         }
       ],
       "goto": [

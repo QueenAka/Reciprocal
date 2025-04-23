@@ -11,7 +11,7 @@
           "display": "Yes, dont wanna risk it.",
           "full": "Yes absolutely. You dont wanna risk losing your job right?",
           "goto": 0,
-          "points": [-10, -10]
+          "points": [-20, -20]
         },
         {
           "display": "No, help him instead.",

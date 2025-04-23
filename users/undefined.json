@@ -17,7 +17,7 @@
           "display": "No.",
           "full": "No. Help your friend gather evidence and go through legal or safe support channels.",
           "goto": 1,
-          "points": [10, -10]
+          "points": [10, -20]
         }
       ],
       "goto": [

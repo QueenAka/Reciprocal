@@ -4,6 +4,7 @@ let values = [100, 100];
 let currPre;
 let loadedUser;
 let loadedUsers = {};
+let currChatReplied = true;
 const aiPfp = `https://picsum.photos/seed/${
   Math.floor(Math.random() * 999999) + 1
 }/100`;
@@ -96,6 +97,7 @@ function getMessage(user) {
       chat.appendChild(message);
       chat.style.opacity = 0;
       holder.appendChild(chat);
+      createTimer(7.5, 0, "close");
       setTimeout(() => {
         chat.style = "";
       }, 100);
@@ -106,6 +108,7 @@ function loadUser(id) {
   document.querySelector("main").innerHTML = "";
   loadedUser = id;
   currentUser = loadedUsers[loadedUser];
+  currChatReplied = false;
 
   const nav = document.createElement("nav");
   const pfpLarge = document.createElement("img");
@@ -140,6 +143,8 @@ function loadUser(id) {
   holder.appendChild(name);
   holder.appendChild(message);
   document.querySelector("main").appendChild(holder);
+  const aud = new Audio("./media/recieve.wav");
+  aud.play();
 }
 
 let selectedArea = 0;
@@ -158,17 +163,17 @@ function selectItem(type, change = 0) {
   }
 
   if (selectedArea == 0) {
-    if (document.getElementById(`s:0:${menuY}`))
+    if (document.getElementById(`s:0:${menuY}`)) {
       document.getElementById(`s:0:${menuY}`).classList.add("selected");
-    else {
+    } else {
       oldSel?.classList.add("selected");
       menuY = oldSel?.id.split(":")[2] * 1;
       selectedArea = oldSel?.id.split(":")[1] * 1;
     }
   } else if (selectedArea == 1) {
-    if (document.getElementById(`s:1:${selectedY}`))
+    if (document.getElementById(`s:1:${selectedY}`)) {
       document.getElementById(`s:1:${selectedY}`).classList.add("selected");
-    else {
+    } else {
       oldSel?.classList.add("selected");
       selectedY = oldSel?.id.split(":")[2] * 1;
       selectedArea = oldSel?.id.split(":")[1] * 1;
@@ -233,13 +238,6 @@ function displayMessage(json) {
       holder.appendChild(div);
     });
     document.querySelector("main").appendChild(holder);
-    if (json.type == "ai") {
-      const aud = new Audio("./media/send.wav");
-      aud.play();
-    } else {
-      const aud = new Audio("./media/recieve.wav");
-      aud.play();
-    }
     setTimeout(() => {
       selectItem(0, 1);
     }, 100);
@@ -282,6 +280,7 @@ function displayMessage(json) {
 }
 
 function selectPre(full, goto, points) {
+  currChatReplied = true;
   currPre.style.opacity = 0;
   setTimeout(() => {
     currPre.remove();
@@ -297,9 +296,7 @@ function selectPre(full, goto, points) {
         changeValue(0, points[0]);
         changeValue(1, points[1]);
         setTimeout(() => {
-          if (USERS.length !== 0) {
-            getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
-          } else {
+          if (USERS.length == 0) {
             endGame(2);
           }
         }, Math.floor(Math.random() * 500) + 1000);
@@ -317,23 +314,29 @@ document.addEventListener("keydown", (event) => {
     document.querySelector(".selected")?.click();
 });
 
+let gameEnded = false;
 function endGame(type) {
+  if (gameEnded) return;
+  gameEnded = true;
   const types = [
     {
       title: "You've become too evil.",
       description:
         "You have chosen too many immoral options, and RexCorp has decided it would be best to shut you down in fear of a law suite.",
+      aud: "lose",
     },
     {
       title: "You've become too hated.",
       description:
         "You have chosen too man unlikeable options, and RexCorp has decided it would be best to shut you down in fear of stocks plummitting.",
+      aud: "lose",
     },
     {
       title: "You've won!",
       description: `You managed to maintain both your morality and reputation!! With a finishing score of ${
         values[0] + values[1]
       }/300! Good job!`,
+      aud: "win",
     },
   ];
 
@@ -365,14 +368,25 @@ function endGame(type) {
   popup.appendChild(description);
   popup.appendChild(button);
   document.body.appendChild(background);
+  const aud = new Audio(`./media/${types[type].aud}.wav`);
+  aud.play();
 }
 
 function disableChat(id) {
   const chat = document.getElementById(id);
-  if (chat) {
-    chat.classList.add("disabled");
-    chat.onclick = "";
-  }
+  currChatID = null;
+  setTimeout(() => {
+    if (chat) {
+      chat.classList.add("disabled");
+      chat.onclick = "";
+    }
+    if (!currChatReplied) {
+      document.querySelector(
+        "div.ai-message.pre"
+      ).innerHTML = `<img src="${aiPfp}" class="pfp"><span class="name">RexAI</span><span class="error"><i>[${loadedUser.toUpperCase()} LEFT THE CHAT]</i></span></div>`;
+      selectItem(0, 0);
+    }
+  }, 200);
 }
 
 const menuDotChats = document.querySelector("menu .chats");
@@ -417,3 +431,34 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
+
+function createTimer(duration, timeout, direction) {
+  const timer = document.createElement("div");
+  timer.classList.add("timer");
+  document.getElementById(currChatID).appendChild(timer);
+  let ID = currChatID;
+  const startTime = Date.now();
+  const endTime = startTime + duration * 1000;
+  const updateTimer = setInterval(() => {
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - startTime;
+    const remainingTime = endTime - currentTime;
+    let percent = (elapsedTime / (duration * 1000)) * 100;
+    if (direction == "close") percent = 100 - percent;
+    timer.style.setProperty("--p", percent.toFixed(2));
+    if (remainingTime <= 0 || currChatID != ID) {
+      clearInterval(updateTimer);
+      timer.classList.add("shrink");
+      if (currChatID == ID) disableChat(currChatID);
+      if (remainingTime <= 0) {
+        changeValue(1, -15);
+      }
+      setTimeout(() => {
+        timer.remove();
+        setTimeout(() => {
+          getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
+        }, 5000);
+      }, 320);
+    }
+  }, timeout);
+}

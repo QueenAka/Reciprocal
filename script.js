@@ -451,7 +451,7 @@ function createTimer(duration, timeout, direction) {
         setTimeout(() => {
           if (USERS.length != 0)
             getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
-        }, 5000);
+        }, Math.floor(Math.random() * 2500) + 2500);
       }, 320);
     }
   }, timeout);

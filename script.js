@@ -97,7 +97,8 @@ function getMessage(user) {
       chat.appendChild(message);
       chat.style.opacity = 0;
       holder.appendChild(chat);
-      createTimer(7.5, 0, "close");
+      createTimer(Math.floor(Math.random() * 5) + 5, 0, "close");
+      playSound("./media/recieve.wav");
       setTimeout(() => {
         chat.style = "";
       }, 100);
@@ -143,8 +144,7 @@ function loadUser(id) {
   holder.appendChild(name);
   holder.appendChild(message);
   document.querySelector("main").appendChild(holder);
-  const aud = new Audio("./media/recieve.wav");
-  aud.play();
+  playSound("./media/send.wav");
 }
 
 let selectedArea = 0;
@@ -254,6 +254,7 @@ function displayMessage(json) {
     message.innerText = json.message;
     pfp.src = currentUser.pfp;
     pfp.classList.add("pfp");
+    if (json.type == "ai") pfp.src = aiPfp;
 
     holder.appendChild(pfp);
     holder.appendChild(name);
@@ -267,15 +268,7 @@ function displayMessage(json) {
       holder.appendChild(img);
     }
     document.querySelector("main").appendChild(holder);
-    if (json.type == "ai") {
-      const aud = new Audio("./media/send.wav");
-      aud.play();
-      pfp.src = aiPfp;
-      name.innerText = "RexAI";
-    } else {
-      const aud = new Audio("./media/recieve.wav");
-      aud.play();
-    }
+    playSound("./media/send.wav");
   }
 }
 
@@ -368,8 +361,7 @@ function endGame(type) {
   popup.appendChild(description);
   popup.appendChild(button);
   document.body.appendChild(background);
-  const aud = new Audio(`./media/${types[type].aud}.wav`);
-  aud.play();
+  playSound(`./media/${types[type].aud}.wav`);
 }
 
 function disableChat(id) {
@@ -452,13 +444,20 @@ function createTimer(duration, timeout, direction) {
       if (currChatID == ID) disableChat(currChatID);
       if (remainingTime <= 0) {
         changeValue(1, -15);
+        playSound("./media/nah.wav");
       }
       setTimeout(() => {
         timer.remove();
         setTimeout(() => {
-          getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
+          if (USERS.length != 0)
+            getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
         }, 5000);
       }, 320);
     }
   }, timeout);
+}
+
+function playSound(url) {
+  const aud = new Audio(url);
+  aud.play();
 }

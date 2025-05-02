@@ -16,7 +16,7 @@ function changeValue(type = 0, by = 0) {
 
   const minMaxVals = [
     [0, 150],
-    [-50, 150],
+    [0, 200],
   ];
   const types = ["morality", "reputation"];
   const [min, max] = minMaxVals[type];
@@ -39,7 +39,7 @@ function changeValue(type = 0, by = 0) {
     if (by > 0) bar.classList.remove("good");
   }, 300);
 
-  if (newVal <= 0) {
+  if (newVal <= min) {
     endGame(type);
   }
 }
@@ -328,7 +328,7 @@ function endGame(type) {
       title: "You've won!",
       description: `You managed to maintain both your morality and reputation!! With a finishing score of ${
         values[0] + values[1]
-      }/300! Good job!`,
+      }/350! Good job!`,
       aud: "win",
     },
   ];
@@ -425,36 +425,47 @@ document.addEventListener("keydown", (e) => {
 });
 
 function createTimer(duration, timeout, direction) {
-  const timer = document.createElement("div");
-  timer.classList.add("timer");
-  document.getElementById(currChatID).appendChild(timer);
+  // const timer = document.createElement("div");
+  // timer.classList.add("timer");
+  // document.getElementById(currChatID).appendChild(timer);
   let ID = currChatID;
   const startTime = Date.now();
   const endTime = startTime + duration * 1000;
-  const updateTimer = setInterval(() => {
-    const currentTime = Date.now();
-    const elapsedTime = currentTime - startTime;
-    const remainingTime = endTime - currentTime;
-    let percent = (elapsedTime / (duration * 1000)) * 100;
-    if (direction == "close") percent = 100 - percent;
-    timer.style.setProperty("--p", percent.toFixed(2));
-    if (remainingTime <= 0 || currChatID != ID) {
-      clearInterval(updateTimer);
-      timer.classList.add("shrink");
-      if (currChatID == ID) disableChat(currChatID);
-      if (remainingTime <= 0) {
-        changeValue(1, -15);
-        playSound("./media/nah.wav");
-      }
-      setTimeout(() => {
-        timer.remove();
-        setTimeout(() => {
-          if (USERS.length != 0)
-            getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
-        }, Math.floor(Math.random() * 2500) + 2500);
-      }, 320);
+  // const updateTimer = setInterval(() => {
+  //   const currentTime = Date.now();
+  //   const elapsedTime = currentTime - startTime;
+  //   const remainingTime = endTime - currentTime;
+  //   let percent = (elapsedTime / (duration * 1000)) * 100;
+  //   if (direction == "close") percent = 100 - percent;
+  //   timer.style.setProperty("--p", percent.toFixed(2));
+  //   if (remainingTime <= 0 || currChatID != ID) {
+  //     clearInterval(updateTimer);
+  //     timer.classList.add("shrink");
+  //     if (currChatID == ID) disableChat(currChatID);
+  //     if (remainingTime <= 0) {
+  //       changeValue(1, -15);
+  //       playSound("./media/nah.wav");
+  //     }
+  //     setTimeout(() => {
+  //       timer.remove();
+  //       setTimeout(() => {
+  //         if (USERS.length != 0)
+  //           getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
+  //       }, Math.floor(Math.random() * 2500) + 2500);
+  //     }, 320);
+  //   }
+  // }, timeout);
+  setTimeout(() => {
+    if (currChatID == ID) {
+      disableChat(currChatID);
+      changeValue(1, -20);
+      playSound("./media/nah.wav");
     }
-  }, timeout);
+    setTimeout(() => {
+      if (USERS.length != 0 && !gameEnded)
+        getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
+    }, Math.floor(Math.random() * 2500) + 2500);
+  }, duration * 1000);
 }
 
 function playSound(url) {

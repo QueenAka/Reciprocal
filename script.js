@@ -97,7 +97,7 @@ function getMessage(user) {
       chat.appendChild(message);
       chat.style.opacity = 0;
       holder.appendChild(chat);
-      createTimer(Math.floor(Math.random() * 5) + 5, 0, "close");
+      createTimer(Math.floor(Math.random() * 10) + 5, 0, "close");
       playSound("./media/recieve.wav");
       setTimeout(() => {
         chat.style = "";
@@ -107,8 +107,8 @@ function getMessage(user) {
 
 function loadUser(id) {
   if (loadedUser == id) return;
-  document.querySelector("main").innerHTML = "";
   loadedUser = id;
+  document.querySelector("main").innerHTML = "";
   currentUser = loadedUsers[loadedUser];
   currChatReplied = false;
 

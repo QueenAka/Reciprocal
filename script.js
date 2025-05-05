@@ -425,47 +425,36 @@ document.addEventListener("keydown", (e) => {
 });
 
 function createTimer(duration, timeout, direction) {
-  // const timer = document.createElement("div");
-  // timer.classList.add("timer");
-  // document.getElementById(currChatID).appendChild(timer);
+  const timer = document.createElement("div");
+  timer.classList.add("timer");
+  document.getElementById(currChatID).appendChild(timer);
   let ID = currChatID;
   const startTime = Date.now();
   const endTime = startTime + duration * 1000;
-  // const updateTimer = setInterval(() => {
-  //   const currentTime = Date.now();
-  //   const elapsedTime = currentTime - startTime;
-  //   const remainingTime = endTime - currentTime;
-  //   let percent = (elapsedTime / (duration * 1000)) * 100;
-  //   if (direction == "close") percent = 100 - percent;
-  //   timer.style.setProperty("--p", percent.toFixed(2));
-  //   if (remainingTime <= 0 || currChatID != ID) {
-  //     clearInterval(updateTimer);
-  //     timer.classList.add("shrink");
-  //     if (currChatID == ID) disableChat(currChatID);
-  //     if (remainingTime <= 0) {
-  //       changeValue(1, -15);
-  //       playSound("./media/nah.wav");
-  //     }
-  //     setTimeout(() => {
-  //       timer.remove();
-  //       setTimeout(() => {
-  //         if (USERS.length != 0)
-  //           getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
-  //       }, Math.floor(Math.random() * 2500) + 2500);
-  //     }, 320);
-  //   }
-  // }, timeout);
-  setTimeout(() => {
-    if (currChatID == ID) {
-      disableChat(currChatID);
-      changeValue(1, -20);
-      playSound("./media/nah.wav");
+  const updateTimer = setInterval(() => {
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - startTime;
+    const remainingTime = endTime - currentTime;
+    let percent = (elapsedTime / (duration * 1000)) * 100;
+    if (direction == "close") percent = 100 - percent;
+    timer.style.setProperty("--p", percent.toFixed(2));
+    if (remainingTime <= 0 || currChatID != ID) {
+      clearInterval(updateTimer);
+      timer.classList.add("shrink");
+      if (currChatID == ID) disableChat(currChatID);
+      if (remainingTime <= 0) {
+        changeValue(1, -15);
+        playSound("./media/nah.wav");
+      }
+      setTimeout(() => {
+        timer.remove();
+        setTimeout(() => {
+          if (USERS.length != 0)
+            getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
+        }, Math.floor(Math.random() * 2500) + 2500);
+      }, 320);
     }
-    setTimeout(() => {
-      if (USERS.length != 0 && !gameEnded)
-        getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
-    }, Math.floor(Math.random() * 2500) + 2500);
-  }, duration * 1000);
+  }, timeout);
 }
 
 function playSound(url) {

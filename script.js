@@ -451,7 +451,7 @@ function createTimer(duration, timeout, direction) {
       setTimeout(() => {
         timer.remove();
         setTimeout(() => {
-          if (USERS.length != 0)
+          if (USERS.length != 0 && !gameEnded)
             getMessage(USERS[Math.floor(Math.random() * USERS.length)]);
         }, Math.floor(Math.random() * 2500) + 2500);
       }, 320);

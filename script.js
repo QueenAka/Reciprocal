@@ -106,6 +106,7 @@ function getMessage(user) {
 }
 
 function loadUser(id) {
+  if (loadedUser == id) return;
   document.querySelector("main").innerHTML = "";
   loadedUser = id;
   currentUser = loadedUsers[loadedUser];

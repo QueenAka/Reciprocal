@@ -256,6 +256,7 @@ function displayMessage(json) {
     pfp.src = currentUser.pfp;
     pfp.classList.add("pfp");
     if (json.type == "ai") pfp.src = aiPfp;
+    if (json.type == "ai") name.innerText = "RexAI";
 
     holder.appendChild(pfp);
     holder.appendChild(name);

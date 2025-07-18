@@ -411,13 +411,15 @@ main nav .bio {
 
 .timer {
   position: absolute;
-  top:7px;
+  top: 7px;
   left: 7px;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: conic-gradient(var(--main) calc(var(--p) * 1%),
-      transparent calc(var(--p) * 1%));
+  background: conic-gradient(
+    var(--main) calc(var(--p) * 1%),
+    transparent calc(var(--p) * 1%)
+  );
   background-color: var(--base);
   outline: var(--base) 4px solid;
   transition: all 0.2s ease-in-out;
